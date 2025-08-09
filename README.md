@@ -51,5 +51,18 @@ Contains the 2 output file types.
 ## How do I use the script?
 1. Download [nanDeck](https://nandeck.com/old-versions) if you have not already. It is free to download and use.
 2. Fill out the **Compile.xlsx** [spreadsheet](Main/NEW_PROTOCOL/Compile.xlsx) with information about the cards and protocol. Click [here](#Spreadsheet) for information about how to fill out the spreadsheet.
+3. Once the spreadsheet is filled out, download it and place it at the root of the protocols folder. This file will be used to source the images used for the icon and background. **Ensure the name and extension match what is shown in the [example](Main/NEW_PROTOCOL) or the program will not work as intended.
+4. Source images
+  - Create or download images for the protocol and command cards backgrounds. These images will be sliced by the program.
+  - For the Command Cards Background:
+    - Ensure the aspect ratio is close to 4:5 or the image will be warped. Higher resolutions look nicer but are not necessary.
+
+  
+  - For the Protocol Cards Background:
+    - Ensure the aspect ratio is close to 7:5 or the image will be warped. Higher resolutions look nicer but are not necessary.
+    - Rotate the final image 90 degrees clockwise. The protocol cards are sideways and the image will not be correct if not rotated.
+    - The loading side is the left and the compiled side is the right
+
+
 
 ## Spreadsheet
