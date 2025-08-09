@@ -12,7 +12,7 @@ UNIT = INCH
 ;               This file works as the root location when starting the program.
 ;
 ;icon.png - The protocol icon.
-;
+;icon.png - The protocol icon.
 ;
 ;If [SliceImageForBackground] = _TRUE_
 ;
@@ -176,17 +176,17 @@ IMAGE=1-6,"{ValueIcons?1}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
 endif
 
 ;PersistentTextBackground
-if = _NOT_ ([persistent] = )
+if = _NOT_ ([PERSISTENT TEXT] = )
 IMAGE=1-6,[CommandCardPersistentTextBackground],0%,0%,100%,100%,0,,[TextBackgroundAlpha]
 endif
 
 ;ImmediateTextBackground
-if = _NOT_ ([immediate] = )
+if = _NOT_ ([IMMEDIATE TEXT] = )
 IMAGE=1-6,[CommandCardImmediateTextBackground],0%,0%,100%,100%,0,,[TextBackgroundAlpha]
 endif
 
 ;AuxiliaryTextBackground
-if = _NOT_ ([auxiliary] = )
+if = _NOT_ ([AUXILIARY TEXT] = )
 IMAGE=1-6,[CommandCardAuxiliaryTextBackground],0%,0%,100%,100%,0,,[TextBackgroundAlpha]
 endif
 
@@ -207,12 +207,28 @@ HTMLMARGINS=AbilityFont,0,0.1,0.1,0,CENTER,120
 HTMLTEXT=1-6,[CARD NAME],{29311/571}%,{38019/400}%,{24058/571}%,{259/80}%,#FFFFFF,0,BE,100,NameFont
 ;ProtocolText
 HTMLTEXT=1-6,[PROTOCOL NAME],{4187/571}%,{419/80}%,{17358/571}%,{3657/800}%,#FFFFFF,0,EB,100,ProtocolFont
-;PersistentText
-HTMLTEXT=1-6,[PERSISTENT],{3425/571}%,22%,{86/1}%,22%,#FFFFFF,0,BE,100,AbilityFont
-;ImmediateText(snap)(size)
-HTMLTEXT=1-6,[IMMEDIATE],6%,46%,86%,24%,#FFFFFF,0,BE,100,AbilityFont
-;AuxiliaryText(snap)(size)
-HTMLTEXT=1-6,[AUXILIARY],6%,72%,86%,24%,#FFFFFF,0,BE,100,AbilityFont
+
+
+;If there is an emphasis, use different concat
+if = _NOT_ ([PERSISTENT EMPHASIS] = )
+    HTMLTEXT=1-6,CONCAT("<b><u>", 1, [PERSISTENT EMPHASIS], 1, "</u></b>: ", 1, [PERSISTENT TEXT], 1),{3425/571}%,22%,{86/1}%,22%,#FFFFFF,0,BE,100, AbilityFont
+else
+    HTMLTEXT=1-6,[PERSISTENT TEXT],{3425/571}%,22%,{86/1}%,22%,#FFFFFF,0,BE,100,AbilityFont
+endif
+
+;If there is an emphasis, use different concat
+if =_NOT_ ([IMMEDIATE EMPHASIS] = )
+    HTMLTEXT=1-6,CONCAT("<b><u>", 1, [IMMEDIATE EMPHASIS], 1, "</u></b>: ", 1, [IMMEDIATE TEXT], 1),6%,46%,86%,24%,#FFFFFF,0,BE,100,AbilityFont
+else
+    HTMLTEXT=1-6,[IMMEDIATE TEXT],6%,46%,86%,24%,#FFFFFF,0,BE,100,AbilityFont
+endif
+
+;If there is an emphasis, use different concat
+if =_NOT_ ([IMMEDIATE EMPHASIS] = )
+    HTMLTEXT=1-6,CONCAT("<b><u>", 1, [AUXILIARY EMPHASIS], 1, "</u></b>: ", 1, [AUXILIARY TEXT], 1),6%,72%,86%,24%,#FFFFFF,0,BE,100,AbilityFont
+else
+    HTMLTEXT=1-6,[AUXILIARY TEXT],6%,72%,86%,24%,#FFFFFF,0,BE,100,AbilityFont
+endif
 
 ;VersionText
 HTMLTEXT=1-6,CONCAT([CREATOR TAG],1," - ",1,[VERSION],1),{48939/533}%,{37177/800}%,{1653/533}%,{73/4}%,#FFFFFF,-90,BE,100,VersionFont
