@@ -131,3 +131,19 @@ Contains the 2 output file types.
 
 
 ## Spreadsheet
+The [spreadsheet](Main/NEW_PROTOCOL/Compile.xlsx) contains two subsheets, one for the Protocol and one for the Command Cards - **both are necessary**.
+
+### Protocol
+- **Protocol Name** - Name of the protocol. IE Water
+- **Protocol Description** - Flavor text for the protocol. IE >Wash away and renew.
+- **Protocol Actions** - Short keyword description for what the protocol focuses on. IE Return, draw, flip
+- **Creator Tag** - Person who designed the protocol. - IE M. Yang, NZ3R0K
+    - *NOTE that the Creator Tag must be short, long names will be cut off.*
+
+### Command
+- **Version** - Tracker for changes made to an individual card. Start at v0.1. Not necessary but an option nonetheless.
+- **Card Name** - Flavor text and general descriptor for the card. Way for people to differentiate between cards of the same value in a single protocol.
+- **Value** - What the cards value will be when placed face-up on the field.
+- **Persistent** - Top command.
+- **Immediate** - Middle command.
+- **Auxiliary** - Bottom command. 
