@@ -56,8 +56,9 @@ Contains the 2 output file types.
   - Create or download images for the protocol and command cards backgrounds. These images will be sliced by the program.
   - For the Command Cards Background:
     - Ensure the aspect ratio is close to 4:5 or the image will be warped. Higher resolutions look nicer but are not necessary.
+  Example Image:
+  ![CommandBackground](https://github.com/user-attachments/assets/d872c6bb-76c7-443a-8bf3-ac20020e8cb6)
 
-  
   - For the Protocol Cards Background:
     - Ensure the aspect ratio is close to 7:5 or the image will be warped. Higher resolutions look nicer but are not necessary.
     - Rotate the final image 90 degrees clockwise. The protocol cards are sideways and the image will not be correct if not rotated.
