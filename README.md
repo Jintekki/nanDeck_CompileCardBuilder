@@ -55,17 +55,21 @@ Contains the 2 output file types.
 4. Source images
   - Create or download images for the protocol and command cards backgrounds. These images will be sliced by the program.
   - For the Command Cards Background:
-    - Ensure the aspect ratio is close to 4:5 or the image will be warped. Higher resolutions look nicer but are not necessary.
+    - Cut image to an aspect ratio close to 4:5 or the image will be warped. Higher resolutions look nicer but are not necessary.
+    - **Ensure image name is CommandBackground.jpg and is placed in the [Assets](Main/NEW_PROTOCOL/Assets) folder!**
   
   Example Image:
+  
   ![CommandBackground](Main/NEW_PROTOCOL/Assets/CommandBackground.jpg)
 
   - For the Protocol Cards Background:
-    - Ensure the aspect ratio is close to 7:5 or the image will be warped. Higher resolutions look nicer but are not necessary.
+    - Cut image to an aspect ratio close to 7:5 or the image will be warped. Higher resolutions look nicer but are not necessary.
     - Rotate the final image 90 degrees clockwise. The protocol cards are sideways and the image will not be correct if not rotated.
     - The loading side is the left and the compiled side is the right
+    - **Ensure image name is ProtocolBackground.jpg and is placed in the [Assets](Main/NEW_PROTOCOL/Assets) folder!** 
 
   Example Image:
+  
   ![ProtocolBackground](Main/NEW_PROTOCOL/Assets/ProtocolBackground.jpg)
 
 
