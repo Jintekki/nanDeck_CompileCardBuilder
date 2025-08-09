@@ -35,10 +35,10 @@ UNIT = INCH
 ;Slices the provided images to be used for each individual card.
 ;This will create a TEMP folder where the sliced images will be placed. It may be safely deleted after cards are made.
 ;If deleted, the images will need to be sliced again.
-[SliceImageForBackground] = _FALSE_
+[SliceImageForBackground] = _TRUE_
 
 ;For sharing every card with others
-[BuildSpriteSheet] = _FALSE_
+[BuildSpriteSheet] = _TRUE_
 [SpriteSheetSize] = 3x3
 
 ;For importing into Tabletop Simulator
