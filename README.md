@@ -133,7 +133,9 @@ Contains the 2 output file types.
 ## Spreadsheet
 The [spreadsheet](Main/NEW_PROTOCOL/Compile.xlsx) contains two subsheets, one for the Protocol and one for the Command Cards - **both are necessary**.
 
-You may save the file under any name, but the program requires a name of Compile.xlsx to function.
+You may save the file under any name, but the program **requires a name of Compile.xlsx to function.**
+
+*Do not change column headers or the program will not function*
 
 ### Protocol
 - **Protocol Name** - Name of the protocol. IE Water
