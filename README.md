@@ -121,14 +121,13 @@ Contains the 2 output file types.
 
 
 
-  - Step 8 - Any generated files will be in the new Generated folder located next to the Compile.xlsx file. The generation path values may be changed inside the script.
+  - Step 8 - Any generated files will be in the new [Generated](Main/NEW_PROTOCOL/Generated) folder located next to the Compile.xlsx file. The generation path values may be changed inside the script.
 
 <img width="679" height="277" alt="91" src="https://github.com/user-attachments/assets/aa6bc394-5fd1-42ec-9d75-240a213593cc" />
 
 
 
   - Step 9 - Import to TTS, Share, Enjoy.
-
 
 
 ## Spreadsheet
