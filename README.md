@@ -10,6 +10,6 @@
 
 ###
 
-<p align="left">1:<br>Download (nanDeck)(https://nandeck.com/old-versions) if you have not already. It is free to download and use.</p>
+<p align="left">1:<br>Download [nanDeck](https://nandeck.com/old-versions) if you have not already. It is free to download and use.</p>
 
 ###
