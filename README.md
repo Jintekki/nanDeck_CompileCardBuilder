@@ -51,7 +51,7 @@ Contains the 2 output file types.
 ## How do I use the script?
 1. Download [nanDeck](https://nandeck.com/old-versions) if you have not already. It is free to download and use.
 2. Fill out the **Compile.xlsx** [spreadsheet](Main/NEW_PROTOCOL/Compile.xlsx) with information about the cards and protocol. Click [here](#Spreadsheet) for information about the spreadsheet.
-3. Once the spreadsheet is filled out, download it and place it at the root of the protocols folder. This file will be used to source the images used for the icon and background. **Ensure the name and extension match what is shown in the [example](Main/NEW_PROTOCOL) or the program will not work as intended.
+3. Once the spreadsheet is filled out, download it and place it at the root of the protocols folder. This file will be used to source the images used for the icon and background. **Ensure the name and extension match what is shown in the [example](Main/NEW_PROTOCOL) or the program will not work as intended.**
 4. Source images
   - Create or download images for the protocol and command cards backgrounds. These images will be sliced by the program.
   - For the Command Cards Background:
@@ -148,6 +148,21 @@ You may save the file under any name, but the program **requires a name of Compi
 - **Version** - Tracker for changes made to an individual card. Start at v0.1. Not necessary but an option nonetheless.
 - **Card Name** - Flavor text and general descriptor for the card. Way for people to differentiate between cards of the same value in a single protocol.
 - **Value** - What the cards value will be when placed face-up on the field.
-- **Persistent** - Top command.
-- **Immediate** - Middle command.
-- **Auxiliary** - Bottom command. 
+- **Persistent Emphasis** - Top commands bolded text.
+- **Persistent Text** - Top command default text.
+- **Immediate Emphasis** - Middle commands bolded text.
+- **Immediate Text** - Middle command default text.
+- **Auxiliary Emphasis** - Bottom command bolded text.
+- **Auxiliary Text** - Bottom command default text.
+
+
+Here is what the spreadsheet looks like in Google Sheets:
+
+Protocol Sheet:
+
+<img width="527" height="50" alt="Screenshot 2025-08-09 135450" src="https://github.com/user-attachments/assets/1c87907c-49fa-492a-8698-b4079f6991ab" />
+
+
+Command Sheet:
+
+<img width="1267" height="141" alt="10" src="https://github.com/user-attachments/assets/d8c1109d-f954-4778-81b2-82e78723fbfe" />
