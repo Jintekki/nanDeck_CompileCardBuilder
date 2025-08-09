@@ -1,0 +1,309 @@
+UNIT = INCH
+;Compile card builder
+;by NZ3R0K
+;Last Updated August 09, 2025
+
+;USEAGE
+;This program is designed to take in a .xlsx containing information about the Protocol and its Command Cards.
+;Additionally some parameters may be altered in this file to change what generates, and from what source images are taken from.
+
+;Rquried Files:
+;Compile.xlsx - Spreadsheet containing information to fill out the protocol and command cards.
+;               This file works as the root location when starting the program.
+;
+;icon.png - The protocol icon.
+;
+;
+;If [SliceImageForBackground] = _TRUE_
+;
+;CommandBackground.jpg - Aspect Ratio 4:5
+;ProtocolBackground.jpg - Aspect Ratio 7:5
+;
+;===========================================================================================================
+;Parameters
+[TextBackgroundAlpha] = 75%
+
+;Dimensions for how many command cards per row and col on the given background image
+[commandcards-x]=3
+[commandcards-y]=2
+
+
+;Dimensions for how many protocol cards per row and col on the given background image.
+[protocolcards-x]=2
+[protocolcards-y]=1
+
+;Slices the provided images to be used for each individual card.
+;This will create a TEMP folder where the sliced images will be placed. It may be safely deleted after cards are made.
+;If deleted, the images will need to be sliced again.
+[SliceImageForBackground] = _FALSE_
+
+;For sharing every card with others
+[BuildSpriteSheet] = _FALSE_
+[SpriteSheetSize] = 3x3
+
+;For importing into Tabletop Simulator
+[BuildTTSSheet] = _TRUE_
+[TTSSheetSize] = 3x2
+
+;For printing on physical paper
+[PrintToPage] = _FALSE_
+
+;Only insert the root folder path, the subfolders will be made automatically.
+;Example: "C:\\Users\\GENERICE_USERNAME_1\\OneDrive\\Pictures\\TTS\\Compile\\Homebrew\\"
+[TTSFileSaveLocation] = "NEW_PROTOCOL\\Generated\\"
+
+;This folder contains the default / universal image components for Compile
+;Example: "C:\\Users\\GENERICE_USERNAME_1\OneDrive\\Pictures\\nanDeck\\Compile\\"
+[CompileImageDefaultsLocation] = "Universal Assets\\"
+;----------------------------------------------------------------------------------------------------------
+;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+;----------------------------------------------------------------------------------------------------------
+
+
+;CODE - Do not touch below this point! Unless you know what your doing :D
+
+
+;----------------------------------------------------------------------------------------------------------
+;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+;----------------------------------------------------------------------------------------------------------
+[card-w]=2.5
+[card-h]=3.5
+CARDSIZE=[card-w],[card-h]
+
+[Path] = ""
+
+INPUTTEXT = "Path", “Select the xlsx file.”,, F
+
+[Root] = replace("[Path]", "Compile.xlsx","")
+
+LINK = "[Root]\Compile.xlsx!Protocol"
+LINK = "[Root]\Compile.xlsx!Command"
+
+
+;===========================================================================================================
+;File Pathing
+;===========================================================================================================
+
+
+[CommandBackgroundImage] = "[Root]\Assets\\CommandBackground.jpg"
+;Ensure protocol background image is rotated 90  CLOCKWISE as that is how cards are printed.
+[ProtocolBackgroundImage] = "[Root]\Assets\\ProtocolBackground.jpg"
+[ProtocolIcon] = "[Root]\Assets\\icon.png"
+
+;Command Cards
+[CommandCardTextBackground] = CONCAT([CompileImageDefaultsLocation],1,"CompileCards_DefaultTextBackground.png",1)
+[CommandCardPersistentTextBackground] = CONCAT([CompileImageDefaultsLocation],1,"CompileCards_PersistentTextBackground.png",1)
+[CommandCardImmediateTextBackground] = CONCAT([CompileImageDefaultsLocation],1,"CompileCards_ImmediateTextBackground.png",1)
+[CommandCardAuxiliaryTextBackground] = CONCAT([CompileImageDefaultsLocation],1,"CompileCards_AuxiliaryTextBackground.png",1)
+[CommandCardLines] = CONCAT([CompileImageDefaultsLocation],1,"CompileCards_Lines.png",1)
+
+;Protocol Cards
+[ProtocolCardLoadingTextBackground] = CONCAT([CompileImageDefaultsLocation],1,"ProtocolLoadingTextBackground.png",1)
+[ProtocolCardLoadingLines] = CONCAT([CompileImageDefaultsLocation],1,"ProtocolLoadingLines.png",1)
+[ProtocolCardCompiledTextBackground] = CONCAT([CompileImageDefaultsLocation],1,"ProtocolCompiledTextBackground.png",1)
+[ProtocolCardCompiledLines] = CONCAT([CompileImageDefaultsLocation],1,"ProtocolCompiledLines.png",1)
+
+;Other
+[CardBackImage] = CONCAT([CompileImageDefaultsLocation],1,"Cardback.jpg",1)
+{[ValueIcons] =
+CONCAT([CompileImageDefaultsLocation],1,"Value_0.png",1)|
+CONCAT([CompileImageDefaultsLocation],1,"Value_1.png",1)|
+CONCAT([CompileImageDefaultsLocation],1,"Value_2.png",1)|
+CONCAT([CompileImageDefaultsLocation],1,"Value_3.png",1)|
+CONCAT([CompileImageDefaultsLocation],1,"Value_4.png",1)|
+CONCAT([CompileImageDefaultsLocation],1,"Value_5.png",1)|
+CONCAT([CompileImageDefaultsLocation],1,"Value_6.png",1)|
+CONCAT([CompileImageDefaultsLocation],1,"Value_7.png",1)|
+CONCAT([CompileImageDefaultsLocation],1,"Value_8.png",1)|
+CONCAT([CompileImageDefaultsLocation],1,"Value_9.png",1)}
+
+
+[commandCardSheetDimensions] = [commandcards-x]|[commandcards-y]
+[protocolCardSheetDimensions] = [protocolcards-x]|[protocolcards-y]
+
+
+CARDS={[commandcards-x]*[commandcards-y]}+3
+
+
+
+;===========================================================================================================
+;Command Cards
+;===========================================================================================================
+
+
+;Generate background images
+IF = [SliceImageForBackground] = _TRUE_
+x=IMAGECREATE("ImageSlice.txt", "commandCard", [CommandBackgroundImage], [commandcards-x], [commandcards-y], [Root])
+x=IMAGECREATE("ImageSlice.txt", "protocolCard", [ProtocolBackgroundImage], [protocolcards-x], [protocolcards-y], [Root])
+ENDIF
+
+
+;Background Image(locked)
+IMAGE=1-{[commandcards-x]*[commandcards-y]},"[Root]\TEMP\\commandCard{§}.jpg",0,0,[card-w],[card-h]
+;DefaultTextBackground
+IMAGE=1-6,[CommandCardTextBackground],0%,0%,100%,100%,0,N,[TextBackgroundAlpha]
+;Icon
+IMAGE=1-6,[ProtocolIcon],{81.3}%,{4891/800}%,{5487/533}%,{5493/800}%
+
+
+;Place the card value.
+if = [VALUE] = 0
+IMAGE=1-6,"{ValueIcons?1}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
+elseif = [VALUE] = 1
+IMAGE=1-6,"{ValueIcons?2}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
+elseif = [VALUE] = 2
+IMAGE=1-6,"{ValueIcons?3}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
+elseif = [VALUE] = 3
+IMAGE=1-6,"{ValueIcons?4}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
+elseif = [VALUE] = 4
+IMAGE=1-6,"{ValueIcons?5}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
+elseif = [VALUE] = 5
+IMAGE=1-6,"{ValueIcons?6}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
+elseif = [VALUE] = 6
+IMAGE=1-6,"{ValueIcons?7}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
+elseif = [VALUE] = 7
+IMAGE=1-6,"{ValueIcons?8}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
+elseif = [VALUE] = 8
+IMAGE=1-6,"{ValueIcons?9}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
+elseif = [VALUE] = 9
+IMAGE=1-6,"{ValueIcons?10}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
+else
+IMAGE=1-6,"{ValueIcons?1}",{22177/533}%,{4967/800}%,{9171/533}%,{9181/800}%
+endif
+
+;PersistentTextBackground
+if = _NOT_ ([persistent] = )
+IMAGE=1-6,[CommandCardPersistentTextBackground],0%,0%,100%,100%,0,,[TextBackgroundAlpha]
+endif
+
+;ImmediateTextBackground
+if = _NOT_ ([immediate] = )
+IMAGE=1-6,[CommandCardImmediateTextBackground],0%,0%,100%,100%,0,,[TextBackgroundAlpha]
+endif
+
+;AuxiliaryTextBackground
+if = _NOT_ ([auxiliary] = )
+IMAGE=1-6,[CommandCardAuxiliaryTextBackground],0%,0%,100%,100%,0,,[TextBackgroundAlpha]
+endif
+
+
+;Lines
+IMAGE=1-6,[CommandCardLines],0%,0%,100%,100%,0,NAT
+;ProtocolFont
+HTMLFONT=ProtocolFont,Bahnschrift Condensed,11,W,#FFFFFF,LEFT
+;NameFont
+HTMLFONT=NameFont,Bahnschrift,8,Z,#FFFFFF,LEFT,0,0,0,,#000000,0.01
+;AbilityFont
+HTMLFONT=AbilityFont,Sans Serif Collection,8,,#FFFFFF,LEFT
+;VersionFont
+HTMLFONT=VersionFont,Bahnschrift Light,6,Z,#FFFFFF,RIGHT,0,0,0,,#000000,0.01
+;AbilityMargins
+HTMLMARGINS=AbilityFont,0,0.1,0.1,0,CENTER,120
+;NameText
+HTMLTEXT=1-6,[CARD NAME],{29311/571}%,{38019/400}%,{24058/571}%,{259/80}%,#FFFFFF,0,BE,100,NameFont
+;ProtocolText
+HTMLTEXT=1-6,[PROTOCOL NAME],{4187/571}%,{419/80}%,{17358/571}%,{3657/800}%,#FFFFFF,0,EB,100,ProtocolFont
+;PersistentText
+HTMLTEXT=1-6,[PERSISTENT],{3425/571}%,22%,{86/1}%,22%,#FFFFFF,0,BE,100,AbilityFont
+;ImmediateText(snap)(size)
+HTMLTEXT=1-6,[IMMEDIATE],6%,46%,86%,24%,#FFFFFF,0,BE,100,AbilityFont
+;AuxiliaryText(snap)(size)
+HTMLTEXT=1-6,[AUXILIARY],6%,72%,86%,24%,#FFFFFF,0,BE,100,AbilityFont
+
+;VersionText
+HTMLTEXT=1-6,CONCAT([CREATOR TAG],1," - ",1,[VERSION],1),{48939/533}%,{37177/800}%,{1653/533}%,{73/4}%,#FFFFFF,-90,BE,100,VersionFont
+
+
+;===========================================================================================================
+;Protocol Card - Loading Side
+;===========================================================================================================
+
+
+;ProtocolCard Loading Side
+IMAGE=7-8,"[Root]\TEMP\\protocolCard{§ - 6}.jpg",0,0,[card-w],[card-h]
+;Lines(snap)(size)
+IMAGE=7,[ProtocolCardLoadingLines],0%,0%,100%,100%
+;Image(snap)(size)
+IMAGE=7,[ProtocolCardLoadingTextBackground],0%,0%,100%,100%,0,,[TextBackgroundAlpha]
+;Icon(size)
+IMAGE=7,[ProtocolIcon],{81.5}%,{86.5}%,10%,6%,90
+;PCProtocolFont
+HTMLFONT=PCProtocolFont,Bahnschrift Condensed,42,WB,#FFFFFF,CENTER
+;PCLoadingFont
+HTMLFONT=PCLoadingFont,Britannic Bold,12,WB,#FFFFFF,CENTER
+;PCDescriptionFont(size)
+HTMLFONT=PCDescriptionFont,Cascadia Code Light,8,W,#FFFFFF,LEFT
+;PCActionFont(size)
+HTMLFONT=PCActionFont,Cascadia Code Light,8,W,#FFFFFF,CENTER
+;ProtocolMargins
+HTMLMARGINS=PCProtocolFont,0,0,0,0,CENTER
+;ProtocolActionMargin
+HTMLMARGINS=PCActionFont,0,0,0,0,CENTER
+;ProtocolText(size)
+HTMLTEXT=7,[PROTOCOL NAME],0%,0%,100%,100%,#FFFFFF,90,EB,100,PCProtocolFont
+;LoadingText
+HTMLTEXT=7,"Loading...",{15035/533}%,0%,{6014/533}%,100%,#FFFFFF,90,EB,100,PCLoadingFont
+;DescriptionText(size)
+HTMLTEXT=7,[PROTOCOL DESCRIPTION],{3539/41}%,{3123/400}%,6%,70%,#FFFFFF,90,EB,100,PCDescriptionFont
+;PCActionText(size)
+HTMLTEXT=7,[PROTOCOL ACTIONS],{4209/533}%,{587/80}%,8%,86%,#FFFFFF,90,EB,100,PCActionFont
+
+
+;===========================================================================================================
+;Protocol Card - Compiled Side
+;===========================================================================================================
+
+
+;TextBackground(snap)(size)
+IMAGE=8,[ProtocolCardCompiledTextBackground],0%,0%,100%,100%,0,,[TextBackgroundAlpha]
+;Lines(snap)(size)
+IMAGE=8,[ProtocolCardCompiledLines],0%,0%,100%,100%
+;ProtocolCompiledProtocolFont(snap)(size)
+HTMLFONT=ProtocolCompiledProtocolFont,Bahnschrift Condensed,24,WB,#FFFFFF,LEFT
+;CompiledFont(snap)(size)
+HTMLFONT=CompiledFont,Bahnschrift,10,W,#FFFFFF,CENTER
+;CompiledMargins(snap)(size)
+HTMLMARGINS=CompiledFont,0,0,0,0,CENTER
+;CompiledText(snap)(size)
+HTMLTEXT=8,"Compiled",6%,64%,8%,30%,#FFFFFF,90,EB,100,CompiledFont
+;ProtocolText(snap)(size)
+HTMLTEXT=8,[PROTOCOL NAME],6%,12%,14%,48%,#FFFFFF,90,EB,100,ProtocolCompiledProtocolFont
+;Icon(size)
+IMAGE=8,[ProtocolIcon],{82.5}%,{87}%,10%,6%,90
+
+
+;===========================================================================================================
+;Card Back
+;===========================================================================================================
+
+
+image=9,[CardBackImage],0,0,[card-w],[card-h]
+
+
+;===========================================================================================================
+;File Generation
+;===========================================================================================================
+
+
+
+IF = [BuildSpriteSheet] = _TRUE_
+COPYCARD="10-11","7-8"
+COPYCARD="13-18","1-6"
+DISPLAY=CONCAT("[Root]\Generated\\Compile_",1,[PROTOCOL NAME],1,"_SpriteSheet.png",1),,,[SpriteSheetSize],10-18
+ENDIF
+
+IF = [BuildTTSSheet] = _TRUE_
+DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\TTS_Compile_",1,[PROTOCOL NAME],1,"_Sheet.png",1),,,[TTSSheetSize],1-6
+DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\TTS_Compile_",1,[PROTOCOL NAME],1,"_ProtocolFront.png",1),,,1x1,7
+DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\TTS_Compile_",1,[PROTOCOL NAME],1,"_ProtocolBack.png",1),,,1x1,8
+ENDIF
+
+IF = [PrintToPage] = _TRUE_
+DUPLEX = "7","8"
+DUPLEX = "1-6","9"
+PRINT = DUPLEX
+ENDIF
