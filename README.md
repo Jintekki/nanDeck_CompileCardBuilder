@@ -50,6 +50,6 @@ Contains the 2 output file types.
 
 ## How do I use the script?
 1. Download [nanDeck](https://nandeck.com/old-versions) if you have not already. It is free to download and use.
-2. Fill out the **Compile.xlsx** [spreadsheet]() with information about the cards and protocol. Click [here](#Spreadsheet) for information about how to fill out the spreadsheet.
+2. Fill out the **Compile.xlsx** [spreadsheet](Main/NEW_PROTOCOL/Compile.xlsx) with information about the cards and protocol. Click [here](#Spreadsheet) for information about how to fill out the spreadsheet.
 
 ## Spreadsheet
