@@ -72,42 +72,63 @@ Contains the 2 output file types.
   
   ![ProtocolBackground](Main/NEW_PROTOCOL/Assets/ProtocolBackground.jpg)
 
-5. Open nanDeck:
-6. Step 1 - Press the "Open Deck" button near the top of the left menu.
+5. Open nanDeck and Generate Cards:
+  - Step 1 - Press the "Open Deck" button near the top of the left menu.
 
 <img width="1919" height="1079" alt="11" src="https://github.com/user-attachments/assets/a6d50db9-6cec-408b-a3a6-ad3a1d2566bf" />
 
-7. Step 2 - Navigate to where you have downloaded the Main folder and open the nanDeck_Compile.txt file.
+
+
+  - Step 2 - Navigate to where you have downloaded the Main folder and open the nanDeck_Compile.txt file.
 
 <img width="1919" height="1079" alt="21" src="https://github.com/user-attachments/assets/53484755-33ed-4d7c-80b8-46cf9de1638c" />
 
 
-8. Step 3 - Press the Validate Deck button on the left bar. The boolean values in the green box may be altered to change what file formats get generated.
+
+  - Step 3 - Press the Validate Deck button on the left bar. The boolean values in the green box may be altered to change what file formats get generated.
 
 <img width="1919" height="1079" alt="31" src="https://github.com/user-attachments/assets/66d1008d-9ca6-4dcf-aedf-b27e1118c5fa" />
 
-9. Step 4 - Press the Browse... button.
+
+
+  - Step 4 - Press the Browse... button.
 
 <img width="1919" height="1079" alt="41" src="https://github.com/user-attachments/assets/b1f85729-f15e-4124-bc29-b30419d47f66" />
 
-10. Step 5 - Navigate to the Protocol folder and open the Compile.xlsx file.
+
+
+  - Step 5 - Navigate to the Protocol folder and open the Compile.xlsx file.
 
 <img width="1919" height="1079" alt="51" src="https://github.com/user-attachments/assets/a627d48b-40d9-4f38-aed9-eb9d87221a03" />
 
-11. Step 6 - Press the Confirm + Build button and wait. If all file names, file extensions, and file locations are correct the program will run as expected.
+
+
+  - Step 6 - Press the Confirm + Build button and wait. If all file names, file extensions, and file locations are correct the program will run as expected.
 
 <img width="1919" height="1079" alt="61" src="https://github.com/user-attachments/assets/13f7b53e-c596-4f37-be2c-7176c8e1b86a" />
 
-12. Step 7 - Your deck will be built and files generated (if any).
+
+
+  - Step 7 - Your deck will be built and files generated (if any). Press the Card Preview button in the green box to preview the cards.
 
 <img width="1919" height="1079" alt="71" src="https://github.com/user-attachments/assets/e36e9f25-55e1-4536-b739-f13a19a04373" />
 
-13. Step 7a (Optional) 
+
+
+    - Step 7a (Optional) Preview cards.
 
 <img width="1919" height="1076" alt="81" src="https://github.com/user-attachments/assets/1b41fff5-d5e3-44b4-ae82-53ac0ca027bd" />
 
-14. Step 8
+
+
+  - Step 8 - Any generated files will be in the new Generated folder located next to the Compile.xlsx file. The generation path values may be changed inside the script.
 
 <img width="679" height="277" alt="91" src="https://github.com/user-attachments/assets/aa6bc394-5fd1-42ec-9d75-240a213593cc" />
+
+
+
+  - Step 9 - Import to TTS, Share, Enjoy.
+
+
 
 ## Spreadsheet
