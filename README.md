@@ -57,7 +57,7 @@ Contains the 2 output file types.
   - For the Command Cards Background:
     - Ensure the aspect ratio is close to 4:5 or the image will be warped. Higher resolutions look nicer but are not necessary.
   Example Image:
-  ![CommandBackground](https://github.com/user-attachments/assets/d872c6bb-76c7-443a-8bf3-ac20020e8cb6)
+  ![CommandBackground](Main/NEW_PROTOCOL/Assets/CommandBackground.jpg)
 
   - For the Protocol Cards Background:
     - Ensure the aspect ratio is close to 7:5 or the image will be warped. Higher resolutions look nicer but are not necessary.
