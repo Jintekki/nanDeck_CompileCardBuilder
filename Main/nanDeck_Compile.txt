@@ -224,7 +224,7 @@ else
 endif
 
 ;If there is an emphasis, use different concat
-if =_NOT_ ([IMMEDIATE EMPHASIS] = )
+if =_NOT_ ([AUXILIARY EMPHASIS] = )
     HTMLTEXT=1-6,CONCAT("<b><u>", 1, [AUXILIARY EMPHASIS], 1, "</u></b>: ", 1, [AUXILIARY TEXT], 1),6%,72%,86%,24%,#FFFFFF,0,BE,100,AbilityFont
 else
     HTMLTEXT=1-6,[AUXILIARY TEXT],6%,72%,86%,24%,#FFFFFF,0,BE,100,AbilityFont
