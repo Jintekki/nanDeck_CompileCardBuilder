@@ -16,7 +16,7 @@ UNIT = INCH
 ;
 ;If [SliceImageForBackground] = _TRUE_
 ;
-;CommandBackground.jpg - Aspect Ratio 4:5
+;CommandBackground.jpg - Aspect Ratio 5:4
 ;ProtocolBackground.jpg - Aspect Ratio 7:5
 ;
 ;===========================================================================================================
