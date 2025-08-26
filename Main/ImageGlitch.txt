@@ -1,0 +1,101 @@
+UNIT=INCH
+DPI=300
+[card-w]=2.5
+[card-h]=3.5
+[path] = [param1]
+;[path] = "Gen\"
+
+CARDSIZE=[card-w],[card-h]
+
+inputtext=SourceImage,"Image",,F
+inputnumber=imgXOffset,"Image X Offset %","20",-100,100
+inputnumber=imgYOffset,"Image Y Offset %","15",-100,100
+inputnumber=gltichOffset1,"Glitch Offset 1 %","0",-100,100
+inputnumber=gltichOffset2,"Glitch Offset 2 %","0",-100,100
+inputnumber=gltichOffset3,"Glitch Offset 3 %","0",-100,100
+inputnumber=gltichOffset4,"Glitch Offset 4 %","0",-100,100
+inputnumber=gltichOffset5,"Glitch Offset 5 %","0",-100,100
+inputnumber=gltichOffset6,"Glitch Offset 6 %","0",-100,100
+inputnumber=gltichOffset7,"Glitch Offset 7 %","0",-100,100
+inputnumber=gltichOffset8,"Glitch Offset 8 %","0",-100,100
+inputnumber=gltichOffset9,"Glitch Offset 9 %","0",-100,100
+inputnumber=gltichOffset10,"Glitch Offset 10 %","0",-100,100
+inputnumber=gltichOffset11,"Glitch Offset 11 %","0",-100,100
+inputnumber=gltichOffset12,"Glitch Offset 12 %","0",-100,100
+inputnumber=gltichOffset13,"Glitch Offset 13 %","0",-100,100
+inputnumber=gltichOffset14,"Glitch Offset 14 %","0",-100,100
+inputnumber=gltichOffset15,"Glitch Offset 15 %","0",-100,100
+inputnumber=gltichOffset16,"Glitch Offset 16 %","0",-100,100
+inputnumber=gltichOffset17,"Glitch Offset 17 %","0",-100,100
+inputnumber=gltichOffset18,"Glitch Offset 18 %","0",-100,100
+inputnumber=gltichOffset19,"Glitch Offset 19 %","0",-100,100
+inputnumber=gltichOffset20,"Glitch Offset 20 %","0",-100,100
+
+[glitch-count] = 20
+[glitch-w]=[card-w]/[glitch-count]
+[image-zoom]=120%
+
+
+IMAGE=0,[SourceImage],0%,0%,100%,100%,90
+IMAGE=1,[SourceImage],-[imgXOffset]%,-[imgYOffset]%,[image-zoom],[image-zoom],90
+
+<fa1>=0,0,[glitch-w],[card-h]
+
+[fa2]=frametrans(fa1,[glitch-w],0)
+[fa3]=frametrans(fa2,[glitch-w],0)
+[fa4]=frametrans(fa3,[glitch-w],0)
+[fa5]=frametrans(fa4,[glitch-w],0)
+[fa6]=frametrans(fa5,[glitch-w],0)
+[fa7]=frametrans(fa6,[glitch-w],0)
+[fa8]=frametrans(fa7,[glitch-w],0)
+[fa9]=frametrans(fa8,[glitch-w],0)
+[fa10]=frametrans(fa9,[glitch-w],0)
+[fa11]=frametrans(fa10,[glitch-w],0)
+[fa12]=frametrans(fa11,[glitch-w],0)
+[fa13]=frametrans(fa12,[glitch-w],0)
+[fa14]=frametrans(fa13,[glitch-w],0)
+[fa15]=frametrans(fa14,[glitch-w],0)
+[fa16]=frametrans(fa15,[glitch-w],0)
+[fa17]=frametrans(fa16,[glitch-w],0)
+[fa18]=frametrans(fa17,[glitch-w],0)
+[fa19]=frametrans(fa18,[glitch-w],0)
+[fa20]=frametrans(fa19,[glitch-w],0)
+
+save=0,frame{°}.jpg,<f*>
+
+[slice-offset] = [image-zoom]/[glitch-count]
+
+IMAGE=2,"frame1.jpg",(0*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset1]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame2.jpg",(1*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset2]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame3.jpg",(2*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset3]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame4.jpg",(3*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset4]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame5.jpg",(4*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset5]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame6.jpg",(5*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset6]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame7.jpg",(6*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset7]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame8.jpg",(7*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset8]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame9.jpg",(8*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset9]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame10.jpg",(9*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset10]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame11.jpg",(10*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset11]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame12.jpg",(11*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset12]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame13.jpg",(12*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset13]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame14.jpg",(13*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset14]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame15.jpg",(14*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset15]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame16.jpg",(15*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset16]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame17.jpg",(16*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset17]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame18.jpg",(17*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset18]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame19.jpg",(18*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset19]%,[slice-offset],[image-zoom],0
+IMAGE=2,"frame20.jpg",(19*[slice-offset])-[imgXOffset]%,-[imgYOffset]%+[gltichOffset20]%,[slice-offset],[image-zoom],0
+
+save=1,CONCAT1([path],"\Assets\\Generated\\ProtocolBackImage.jpg"),0,0,100%,100%
+save=2,CONCAT1([path],"\Assets\\Generated\\ProtocolFrontImage.jpg"),0,0,100%,100%
+
+;N[elements] = alpha|beta|gamma|delta
+;log=,,"{[elements]?0}"
+
+IF = {§} = 2
+    FOR = A, 1, 20, 1
+        save=,"frame{A}.jpg",0,0,1%,1%,,,,,,,F
+    NEXT
+
+    log=,,"done"
+endif

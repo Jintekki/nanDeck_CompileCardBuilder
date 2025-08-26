@@ -2,12 +2,12 @@ UNIT=INCH
 [cards-w]=2.5
 [cards-h]=3.5
 [fileName] = [param1]
-[image] = [param2]
+INPUTTEXT = SourceImage, "Image to Slice:","",F
 [cards-x]=[param3]
 [cards-y]=[param4]
 
 CANVASSIZE=[cards-w]*[cards-x],[cards-h]*[cards-y]
 CANVAS = 1-6
-IMAGE=0,[image],0,0,100%,100%
+IMAGE=0,[SourceImage],0,0,100%,100%
 [framebox] = FRAMEBOX(0,0,[cards-w]*[cards-x],[cards-h]*[cards-y],[cards-w],[cards-h])
-SAVE=0,"[param5]\TEMP\\[fileName]{°}.jpg",<framebox>
+SAVE=0,"[param2]\Assets\\Generated\\[fileName]{°}.jpg",<framebox>
