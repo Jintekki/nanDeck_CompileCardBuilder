@@ -1,6 +1,9 @@
 # nanDeck Compile Card Builder
 ## Purpose
 This is a script and accomponying files used by the nanDeck program to create homebrew protocols and command cards for the card game Compile designed by [Michael Yang](https://boardgamegeek.com/boardgamedesigner/158096/michael-yang).
+
+# NOTICE - Tutorial is out of date. Currently in the process of updating to the newest version. Thank you for your understanding :D
+
 ## Contents
 ### <ins>-Main Folder-
 + **nanDeck_Compile.txt** : The core script that builds the cards.
