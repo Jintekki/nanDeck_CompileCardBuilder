@@ -13,7 +13,7 @@ This is a script and accomponying files used by the nanDeck program to create ho
 A multitude of images used by the script to build each card. These images are shared between all cards.
 
 
-### <ins>-Main Folder//NEW_PROTOCOL-</ins>
+### <ins>-Main Folder//NEW_PROTOCOL</ins>
 This is an example for how the file structure should be set up.
 
 + **Protocol.xslx** : The spreadsheet file containing the information for each card. Please ensure that the <ins>filename does not change</ins> and that it is placed at the upmost folder as it works as the root for the programs execution to find the other custom files for the protocol (ie not the universal assets).
