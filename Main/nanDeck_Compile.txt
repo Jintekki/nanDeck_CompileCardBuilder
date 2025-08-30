@@ -18,7 +18,10 @@ UNIT = INCH
 
 
 ;Only insert the root folder path, the subfolders will be made automatically.
-[TTSFileSaveLocation] = "NEW_PROTOCOL\\Generated\\"
+[TTSFileSaveLocation] = "Generated\\"
+
+;Only insert the root folder path, the subfolders will be made automatically.
+[SpriteSheetSaveLocation] = "Generated\\"
 
 ;This folder contains the default / universal image components for Compile
 [CompileImageDefaultsLocation] = "Universal Assets\\"
@@ -295,13 +298,13 @@ IF = [BuildSpriteSheet] = "True"
 COPYCARD="10-11","7-8"
 COPYCARD="12","9"
 COPYCARD="13-18","1-6"
-DISPLAY=CONCAT("[Root]\Generated\\Compile_",1,[PROTOCOL NAME],1,"_SpriteSheet.png",1),,,[SpriteSheetSize],10-18
+DISPLAY=CONCAT([SpriteSheetSaveLocation],1,"_SpriteSheet.png",1),,,[SpriteSheetSize],10-18
 ENDIF
 
 IF = [BuildTTSSheet] = "True"
-DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\TTS_Compile_",1,[PROTOCOL NAME],1,"_Sheet.png",1),,,[TTSSheetSize],1-6
-DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\TTS_Compile_",1,[PROTOCOL NAME],1,"_ProtocolFront.png",1),,,1x1,7
-DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\TTS_Compile_",1,[PROTOCOL NAME],1,"_ProtocolBack.png",1),,,1x1,8
+DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\Sheet.png",1),,,[TTSSheetSize],1-6
+DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\A.png",1),,,1x1,7
+DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\B.png",1),,,1x1,8
 ENDIF
 
 IF = [PrintToPage] = "True"
