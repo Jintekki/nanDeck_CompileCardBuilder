@@ -58,7 +58,7 @@ Contains the 2 output file types.
     
   Example Image:
   
-  ![CommandBackground](Main/NEW_PROTOCOL/Assets/Background.jpg)
+  ![Background](Main/NEW_PROTOCOL/Assets/Background.jpg)
 
 
 ### Card Creation
