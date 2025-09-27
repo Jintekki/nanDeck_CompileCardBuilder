@@ -1,7 +1,7 @@
 UNIT = INCH
 ;Compile card builder
 ;by NZ3R0K
-;Last Updated August 21, 2025
+;Last Updated August 27, 2025
 
 ;USEAGE
 ;This program is designed to take in a .xlsx containing information about the Protocol and its Command Cards.
@@ -170,56 +170,77 @@ endif
 
 ;Lines
 IMAGE=1-6,[CommandCardLines],0%,0%,100%,100%,0,NAT
-;ProtocolFont
-HTMLFONT=ProtocolFont,HACKED,20,,#FFFFFF,LEFT
-;NameFont
-HTMLFONT=NameFont,Aldrich,6,Z,#FFFFFF,LEFT,0.005,0.005,0.1,#000000
+;ProtocolNameFont
+HTMLFONT=ProtocolNameFont,HACKED,20,,#FFFFFF,LEFT
 ;AbilityFont
-HTMLFONT=AbilityFont,Aldrich,8,,#FFFFFF,LEFT,,,,,,,,,-0.002
-;VersionFont
-HTMLFONT=VersionFont,Aldrich,6,Z,#FFFFFF,RIGHT,0.005,0.005,0.1,#000000
+HTMLFONT=AbilityFont,TTSupermolot-Regular,9,,#FFFFFF,LEFT,0,0,0,,,0,0,,0.0025
+HTMLFONT=AbilityFontEmphasis,TTSupermolot-Bold,9,UZ,#FFFFFF,,0,0,0,,,0,0,,0.0025
+;PackFont
+HTMLFONT=PackTagFont,TTSupermolot-Regular,6,ZW,#FFFFFF,RIGHT,0.005,0.005,0.1,#000000
 ;ValueFont
 HTMLFONT=ValueFont,HACKED,36,,#FFFFFF,CENTER
+;CreatorFont
+HTMLFONT=CreatorTagFont,TTSupermolot-Regular,6,Z,#FFFFFF,LEFT,0.005,0.005,0.1,#000000
+;CardNameFont
+HTMLFONT=CardNameFont,TTSupermolot-Regular,5,Z,#FFFFFF,LEFT,0.005,0.005,0.1,#000000
+;VersionFont
+HTMLFONT=VersionFont,TTSupermolot-Regular,4,Z,#FFFFFF,RIGHT,0.005,0.005,0.1,#000000
+
 ;AbilityMargins
-HTMLMARGINS=AbilityFont,0,0.05,-0.1,0,CENTER,120
+HTMLMARGINS=AbilityFont,0,0.15,0,0,CENTER,125
 ;ValueMargins
 HTMLMARGINS=ValueFont,0,0.1,0.1,0,CENTER,120
 ;CommandCardProtocolMargins
-HTMLMARGINS=ProtocolFont,0,0,0,0,CENTER
-;NameText
-HTMLTEXT=1-6,[CARD NAME],51%,94.5%,{24058/571}%,{259/80}%,#FFFFFF,0,BE,100,NameFont
-;ProtocolText
-HTMLTEXT=1-6,[PROTOCOL NAME],{4187/571}%,{3809/800}%,{19109/571}%,{619/100}%,#FFFFFF,0,EFB,100,ProtocolFont,ProtocolFont
+HTMLMARGINS=ProtocolNameFont,0,0,0,0,CENTER
+
 ;ValueText
 HTMLTEXT=1-6,[VALUE],{23372/571}%,{1097/160}%,{10658/571}%,{5257/400}%,#FFFFFF,0,EB,100,ValueFont,ValueFont
+;Pack Tag
+HTMLTEXT=1-6,[PACK],91.75%,46.471%,3.75%,18.25%,#FFFFFF,-90,BE,100,PackTagFont
+
+if= _NOT_ ([CARD NAME] = )
+HTMLTEXT=1-6,[PROTOCOL NAME],{4187/571}%,4%,30%,{619/100}%,#FFFFFF,0,EFB,100,ProtocolNameFont,ProtocolNameFont
+HTMLTEXT=1-6,[CARD NAME],8%,8.25%,25.732%,3.24%,#FFFFFF,0,BE,100,CardNameFont
+else
+HTMLTEXT=1-6,[PROTOCOL NAME],{4187/571}%,{3809/800}%,30%,{619/100}%,#FFFFFF,0,EFB,100,ProtocolNameFont,ProtocolNameFont
+endif
+
+[PERSTEXT] = REPLACE([PERSISTENT TEXT],\13\,"<br>")
+[IMMTEXT] = REPLACE([IMMEDIATE TEXT],\13\,"<br>")
+[AUXTEXT] = REPLACE([AUXILIARY TEXT],\13\,"<br>")
+
+[PEREMPH] = REPLACE([PERSISTENT EMPHASIS],\13\,"<br>")
+[IMMEMPH] = REPLACE([IMMEDIATE EMPHASIS],\13\,"<br>")
+[AUXEMPH] = REPLACE([AUXILIARY EMPHASIS],\13\,"<br>")
 
 ;If there is an emphasis, use different concat
 if = _NOT_ ([PERSISTENT EMPHASIS] = )
-    HTMLTEXT=1-6,CONCAT("<b><u>", 1, [PERSISTENT EMPHASIS], 1, "</u></b>: ", 1, [PERSISTENT TEXT], 1),6%,22%,85%,22%,#FFFFFF,0,BE,100, AbilityFont
+HTMLKEY = 1-6, (emphasis), "{PEREMPH?§}:", AbilityFontEmphasis
+HTMLTEXT=1-6,"(emphasis) {PERSTEXT?§}",4.5%,{18209/800}%,88%,{3459/160}%,#FFFFFF,0,BE,100,AbilityFont
 else
-    HTMLTEXT=1-6,[PERSISTENT TEXT],6%,22%,85%,22%,#FFFFFF,0,BE,100,AbilityFont
+HTMLTEXT=1-6,{PERSTEXT?§},4.5%,{18209/800}%,88%,{3459/160}%,#FFFFFF,0,BE,100,AbilityFont
 endif
 
 ;If there is an emphasis, use different concat
 if =_NOT_ ([IMMEDIATE EMPHASIS] = )
-    HTMLTEXT=1-6,CONCAT("<b><u>", 1, [IMMEDIATE EMPHASIS], 1, "</u></b>: ", 1, [IMMEDIATE TEXT], 1),6%,46%,85%,24%,#FFFFFF,0,BE,100,AbilityFont
+HTMLKEY = 1-6, (emphasis), "{IMMEMPH?§}:", AbilityFontEmphasis
+HTMLTEXT=1-6,"(emphasis) {IMMTEXT?§}",4.5%,{38933/800}%,{48116/571}%,{8533/400}%,#FFFFFF,0,BE,100,AbilityFont
 else
-    HTMLTEXT=1-6,[IMMEDIATE TEXT],6%,46%,85%,24%,#FFFFFF,0,BE,100,AbilityFont
+HTMLTEXT=1-6,{IMMTEXT?§},4.5%,{38933/800}%,{48116/571}%,{8533/400}%,#FFFFFF,0,BE,100,AbilityFont
 endif
 
 ;If there is an emphasis, use different concat
 if =_NOT_ ([AUXILIARY EMPHASIS] = )
-    HTMLTEXT=1-6,CONCAT("<b><u>", 1, [AUXILIARY EMPHASIS], 1, "</u></b>: ", 1, [AUXILIARY TEXT], 1),6%,72%,85%,24%,#FFFFFF,0,BE,100,AbilityFont
+HTMLKEY = 1-6, (emphasis), "{AUXEMPH?§}:", AbilityFontEmphasis
+HTMLTEXT=1-6,"(emphasis) {AUXTEXT?§}",4.5%,72%,85%,24%,#FFFFFF,0,BE,100,AbilityFont
 else
-    HTMLTEXT=1-6,[AUXILIARY TEXT],6%,72%,85%,24%,#FFFFFF,0,BE,100,AbilityFont
+HTMLTEXT=1-6,{AUXTEXT?§},4.5%,72%,85%,24%,#FFFFFF,0,BE,100,AbilityFont
 endif
 
-;VersionText
-if = _NOT_ ([VERSION] = )
-    HTMLTEXT=1-6,CONCAT([CREATOR TAG],1,"-",1,[VERSION],1),{48939/533}%,{37177/800}%,3.5%,18.25%,#FFFFFF,-90,BE,100,VersionFont
-else
-    HTMLTEXT=1-6,[CREATOR TAG],{48939/533}%,{37177/800}%,3.5%,18.25%,#FFFFFF,-90,BE,100,VersionFont
-endif
+;CreatorTag
+HTMLTEXT=1-6,[CREATOR TAG],{29082/571}%,{3779/40}%,{24058/571}%,{259/80}%,#FFFFFF,0,BE,100,CreatorTagFont
+;VersionTag
+HTMLTEXT=1-6,[VERSION],{23525/571}%,{819/200}%,{1598/571}%,{12419/800}%,#FFFFFF,90,BE,100,VersionFont
 
 ;===========================================================================================================
 ;Protocol Card - Loading Side
@@ -237,9 +258,9 @@ IMAGE=7,[ProtocolIcon],79%,84.55%,{7993/571}%,10%,90
 ;PCProtocolFont
 HTMLFONT=PCProtocolFont,HACKED,38,,#FFFFFF,CENTER,0,0,0.25,#000000
 ;PCDescriptionFont(size)
-HTMLFONT=PCDescriptionFont,Aldrich,8,W,#FFFFFF,LEFT
+HTMLFONT=PCDescriptionFont,TTSupermolot-Regular,8,W,#FFFFFF,LEFT
 ;PCActionFont(size)
-HTMLFONT=PCActionFont,Aldrich,8,W,#FFFFFF,CENTER
+HTMLFONT=PCActionFont,TTSupermolot-Regular,8,W,#FFFFFF,CENTER
 ;ProtocolMargins
 HTMLMARGINS=PCProtocolFont,0,0,0,0,CENTER,0
 ;ProtocolActionMargin
@@ -251,9 +272,9 @@ HTMLFONT=PCLoadingFont,Motion Control,16,W,#FFFFFF,CENTER,0,0,0.25,#000000
 ;LoadingText
 HTMLTEXT=7,"Loading...",{17282/571}%,{31009/800}%,{4415/571}%,{20419/800}%,#FFFFFF,90,EB,100,PCLoadingFont
 ;DescriptionText(size)
-HTMLTEXT=7,CONCAT1("> ",[PROTOCOL DESCRIPTION]),{3539/41}%,{3123/400}%,6%,70%,#FFFFFF,90,EB,100,PCDescriptionFont
+HTMLTEXT=7,"> [PROTOCOL DESCRIPTION]",87.5%,{3123/400}%,6%,70%,#FFFFFF,90,EB,100,PCDescriptionFont
 ;PCActionText(size)
-HTMLTEXT=7,[PROTOCOL ACTIONS],{4209/533}%,{587/80}%,8%,86%,#FFFFFF,90,EB,100,PCActionFont
+HTMLTEXT=7,[PROTOCOL ACTIONS],8.5%,6.5%,8%,86%,#FFFFFF,90,EB,100,PCActionFont
 
 
 ;===========================================================================================================
@@ -268,7 +289,7 @@ IMAGE=8,[ProtocolCardCompiledTextBackground],0%,0%,100%,100%,0,,[TextBackgroundA
 ;Lines(snap)(size)
 IMAGE=8,[ProtocolCardCompiledLines],0%,0%,100%,100%
 ;ProtocolCompiledProtocolFont(snap)(size)
-HTMLFONT=ProtocolCompiledProtocolFont,HACKED,24,WB,#FFFFFF,CENTER
+HTMLFONT=ProtocolCompiledProtocolFont,HACKED,24,W,#FFFFFF,CENTER
 ;CompiledFont(snap)(size)
 HTMLFONT=CompiledFont,Bahnschrift,10,W,#FFFFFF,CENTER
 ;CompiledMargins(snap)(size)
@@ -298,11 +319,11 @@ IF = [BuildSpriteSheet] = "True"
 COPYCARD="10-11","7-8"
 COPYCARD="12","9"
 COPYCARD="13-18","1-6"
-DISPLAY=CONCAT([SpriteSheetSaveLocation],1,"_SpriteSheet.png",1),,,[SpriteSheetSize],10-18
+DISPLAY=CONCAT("[Root]\Generated\\Compile_",1,[PROTOCOL NAME],1,"_SpriteSheet.png",1),,,[SpriteSheetSize],10-18
 ENDIF
 
 IF = [BuildTTSSheet] = "True"
-DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\Sheet.png",1),,,[TTSSheetSize],1-6
+DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\CommandSheet.png",1),,,[TTSSheetSize],1-6
 DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\A.png",1),,,1x1,7
 DISPLAY=CONCAT([TTSFileSaveLocation],1,[PROTOCOL NAME],1,"\\B.png",1),,,1x1,8
 ENDIF
