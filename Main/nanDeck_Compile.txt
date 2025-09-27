@@ -319,7 +319,7 @@ IF = [BuildSpriteSheet] = "True"
 COPYCARD="10-11","7-8"
 COPYCARD="12","9"
 COPYCARD="13-18","1-6"
-DISPLAY=CONCAT("[Root]\Generated\\Compile_",1,[PROTOCOL NAME],1,"_SpriteSheet.png",1),,,[SpriteSheetSize],10-18
+DISPLAY=CONCAT([SpriteSheetSaveLocation],1,[PROTOCOL NAME],1,"_SpriteSheet.png",1),,,[SpriteSheetSize],10-18
 ENDIF
 
 IF = [BuildTTSSheet] = "True"
